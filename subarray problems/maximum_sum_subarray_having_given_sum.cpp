@@ -1,3 +1,6 @@
+/* The idea is to store to keep of map sum and the lowest index where it was achieved. After that for sum achieved at
+   every index, subtract sum - s and check if this element exists in map and maximize this length using maxi variable */
+
 #include<bits/stdc++.h>
 //#define int long long
 using namespace std;
