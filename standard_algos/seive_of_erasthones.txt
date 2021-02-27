@@ -1,0 +1,12 @@
+*****SEIVE OF ERASTHONES*****
+
+bool notPrime[n] = {};
+for(int i=2;i<=n;i++) {
+	if(!notPrime[i]) {
+		for(j = i*i; j<=n ; j+=i) {
+			notPrime[i] = true;
+		}
+	}
+}
+
+/* can also push prime numbers into vector if we want to collect prime numbers */
