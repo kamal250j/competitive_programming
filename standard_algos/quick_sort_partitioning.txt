@@ -1,0 +1,49 @@
+/* program makes use of quick sort partitioning to sort binary array in O(n) time with and O(1) auxillary space */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define int long long
+#define ll long long
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl "\n"
+const int mod = 1e9 + 7 ; 
+signed main() {
+    
+    // partitioning allows us to shift all elements greater than pivot to the right and all elements lesser than pivot to the left
+    int n;
+    cin>>n;
+    int a[n];
+    int pivot = 1;
+    for(int i=0;i<n;i++) {
+        cin>>a[i];
+    }
+    
+    //Two logics : first -> starting iterating from both ends and swap if smaller element is on RHS and smaller element in on LHS
+    /*int i,j;
+    for(i=0,j=n-1;i < j;i++,j--) {
+        while(a[i] < pivot)
+            i++;
+        while(a[j] >= pivot)
+            j--;
+        if(i < j) {
+            swap(a[i],a[j]);
+        }
+    }*/
+    
+    // Second -> The standard logic
+    // Keep both pointers at starting keep incrementing i and swap with j if a[i] is less than pivot. j will either point
+    // to the same location as i if no value >= pivot is seen or will point to first value greater than pivot. So that 
+    // when elements are swapped they are then in proper order.
+    int j = 0;
+    for(int i=0;i<n;i++) {
+        if(a[i] < pivot) {
+            swap(a[i],a[j]);
+            j++;
+        }
+    }
+    
+    for(int i : a)
+        cout<<i<<" ";
+        
+}
