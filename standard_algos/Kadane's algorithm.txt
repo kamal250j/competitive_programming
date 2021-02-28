@@ -1,0 +1,29 @@
+/* Idea behind Kadane's algorithm - 
+   Keep adding elements in subarray as long as sum is positive. If the sum goees to 0, start all over again i.e. set sum to 0.
+   Also, keep track of the maximum sum you have achieved using max_sum variable.
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define int long long
+#define ll long long
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl "\n"
+const int mod = 1e9 + 7 ; 
+signed main() {
+    
+    // Kadane's algorithm - maximum sum subarray in an array
+    int n;
+    cin>>n;
+    int a[n+1];
+    int sum = 0;
+    int max_sum = 0;
+    for(int i=1;i<=n;i++) {
+        cin>>a[i];
+        sum = max(sum + a[i],0);
+        max_sum = max(max_sum,sum);
+    }
+    
+    cout<<max_sum<<endl;
+}
