@@ -19,7 +19,7 @@ signed main() {
         cin>>a[i];
     }
     
-    //Two logics : first -> starting iterating from both ends and swap if smaller element is on RHS and smaller element in on LHS
+    //Two logics : first -> start iterating from both ends and swap if smaller element is on RHS and greater element in on LHS
     /*int i,j;
     for(i=0,j=n-1;i < j;i++,j--) {
         while(a[i] < pivot)
@@ -33,7 +33,7 @@ signed main() {
     
     // Second -> The standard logic
     // Keep both pointers at starting keep incrementing i and swap with j if a[i] is less than pivot. j will either point
-    // to the same location as i if no value >= pivot is seen or will point to first value greater than pivot. So that 
+    // to the same location as i if no value >= pivot is seen, or will point to first value greater than pivot. So that 
     // when elements are swapped they are then in proper order.
     int j = 0;
     for(int i=0;i<n;i++) {
