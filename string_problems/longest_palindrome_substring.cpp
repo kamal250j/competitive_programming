@@ -3,6 +3,8 @@
   (i,j) gives whether palindrome exists between index i to j (both inclusive) of string 
 */
 
+// this problem can be solved in O(n^2) time without using space. Also, this can be solved in O(n) time using Manacher's algorithm 
+
 #include<bits/stdc++.h>
 using namespace std;
 
