@@ -1,0 +1,81 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+#define int long long
+#define ll long long
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl "\n"
+const int mod = 1e9 + 7 ; 
+ 
+struct node {
+    int max;
+    int sum;
+    int odd;
+};
+ 
+ll a[500005];
+node seg[2000000];
+ 
+node add(node a,node b) {
+    return {max(a.max,b.max),a.sum+b.sum,a.odd+b.odd};
+}
+ 
+void build(int n, int l, int r) {
+    if(l == r) {
+        seg[n] = {a[l],a[l],(a[l] % 2 ? 1 : 0)};
+        return;
+    }
+    int m = l + (r - l) / 2;
+    build(2*n,l, m);
+    build(2*n+1,m+1,r);
+    seg[n] = add(seg[2*n],seg[2*n+1]);
+}
+ 
+void update(int n,int l, int r,int i, int v) {
+    if(i < l || i > r)
+        return;
+    if(l == r && l == i) {
+        seg[n] = {v,v,(v % 2 ? 1 : 0)};
+        return;
+    }
+    int m = l + (r - l) / 2;
+ 
+    update(2*n,l,m,i,v);
+    update(2*n+1,m+1,r,i,v);
+    seg[n] = add(seg[2*n],seg[2*n+1]);
+}
+ 
+node query(int n,int l, int r, int ql,int qr) {
+    if(l >= ql && r <= qr) {
+        return seg[n] ;
+    }
+    int m = l + (r - l) / 2;
+    if(ql > r || qr < l)
+        return {0,0,0};
+    return add(query(2*n,l,m,ql,qr),query(2*n+1,m+1,r,ql,qr));
+}
+ 
+signed main() {
+    
+    FIO;
+    int n,q;
+    cin>>n>>q;
+    for(int i=1;i<=n;i++) {
+        cin>>a[i];
+    }
+    build(1,1,n);
+    int t,l,r;
+    while(q--) {
+        cin>>t>>l>>r;
+        if(t == 1) {
+            update(1,1,n,l,r);
+        }
+        else {
+            node p = query(1,1,n,l,r);
+            if(p.max % 2)
+                p.odd = r-l+1-p.odd;
+            cout<<((r-l+1)*p.max - p.sum+p.odd)/2<<endl;
+        }
+    }
+    
+}
