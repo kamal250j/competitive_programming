@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+//#define ll long long int
+#define FIO ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0)
+#define mod 1000000007
+#define N 1000000
+ 
+signed main(){
+    
+    int div[51] = {};
+    for(int i=1;i<=50;i++) {
+        for(int j=i;j<=50;j+=i) {
+            div[j]++;
+        }
+    }
+    
+    for(int i=1;i<=50;i++) {
+        cout<<i<<" "<<div[i]<<endl;
+    }
+    
+}
