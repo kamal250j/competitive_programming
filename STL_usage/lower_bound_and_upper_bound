@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    vector<int> vi;
+    set<int> si;
+    int a[100];
+    int temp;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++) {
+        cin>>temp;
+        vi.push_back(temp);
+        si.insert(temp);
+        a[i] = temp;
+    }
+    
+    /* Do not use lower_bound or upper_bound on an unsorted array 
+       lower_bound an upper_bound on unsorted array will give undefined values */
+    
+    auto it = lower_bound(vi.begin(),vi.end(),10);
+    auto it2 = upper_bound(vi.begin(),vi.end(),10);
+    
+    auto it3 = si.lower_bound(10);
+    auto it4 = si.upper_bound(10);
+    
+    int *ptr = lower_bound(a,a+n,10);
+    int *ptr2 = upper_bound(a,a+n,10);
+    
+    cout<<*it<<" "<<*it2<<" "<<*it3<<" "<<*it4<<" "<<*ptr<<" "<<*ptr2<<endl;
+}
