@@ -1,0 +1,36 @@
+https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/
+
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        
+        /*  Idea :
+            Think of it in reverse way i.e. reach [0,0] from [a1,a2]
+            If element is odd, then we have no option but to individually
+            decrement the value.
+            But when it comes to the multiplication, we can simply find what
+            is the maximum number of multiply by 2 operations we need to perform
+            from all the elements, since these operations can be performed for
+            multiple element at once and thus can be arranged however we want.
+        */
+        
+        int ones = 0;
+        int mx_twos = 0;
+        for(int i=0;i<nums.size();i++) {
+            int twos = 0;
+            while(nums[i]) {
+                if(nums[i] % 2) {
+                    ones++;
+                    nums[i]--;
+                }
+                else {
+                    twos++;
+                    nums[i] /= 2;
+                }
+            }
+            mx_twos = max(mx_twos,twos);
+        }
+        
+        return ones + mx_twos;
+    }
+};
