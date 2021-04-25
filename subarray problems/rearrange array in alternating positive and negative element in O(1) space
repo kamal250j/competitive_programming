@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++) {
+        cin>>a[i];
+    }
+    
+    int curr = 0;
+    int neg = 0;
+    int pos = 0;
+    while(curr < n) {
+        if(curr % 2 == 0) {
+            if(a[curr] < 0) {
+                while(pos < n && a[pos] < 0) 
+                    pos++;
+                if(pos < n) 
+                    swap(a[pos],a[curr]);
+            }
+            curr++;
+            neg = curr+1;
+        }
+        if(curr % 2 == 1) {
+            if(a[curr] >= 0) {
+                while(neg < n && a[neg] >= 0) 
+                    neg++;
+                if(neg < n)
+                    swap(a[neg], a[curr]);
+            }
+            curr++;
+            pos = curr+1;
+        }
+        
+    }
+    
+    for(auto it : a)
+        cout<<it<<" ";
+    cout<<endl;
+    
+}
+    
