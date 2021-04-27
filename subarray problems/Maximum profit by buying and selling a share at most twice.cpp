@@ -1,4 +1,5 @@
 /* We basically need to solve this recursion dp[i,j] = max(dp[i,k] + dp[k+1,j]) for i <= k <= j 
+   where dp[i,j] represents the maximum profit we get by buying and selling stock
    This can be done using segment tree as well in O(nlogn)
    Following is the approach to solve it in O(n) time and O(n) space
 */
