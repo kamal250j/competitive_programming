@@ -2,6 +2,8 @@
 using namespace std;
 
 int lps[1003];
+/* method calculates the length of the longest prefix which is also a suffix for
+   for every index and stores in lps array */
 void createLpsArray(string pat) {
     
     int prev;
