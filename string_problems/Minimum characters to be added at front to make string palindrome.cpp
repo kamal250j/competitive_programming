@@ -1,5 +1,6 @@
-/* O(n^2) time complexity DP approach
-   The idea is to find the longest palindromic substring starting from first index, then characters to be added is s.length() - len_substr
+/* O(n^2) for checking each subarray
+   The idea is to find the longest palindromic substring starting from first index i.e len_substr, then characters to be added is s.length() - len_substr
+   O(n) using KMP
 */
 
 #include<bits/stdc++.h>
