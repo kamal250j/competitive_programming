@@ -1,6 +1,9 @@
 /* O(n^2) for checking each subarray
    The idea is to find the longest palindromic substring starting from first index i.e len_substr, then characters to be added is s.length() - len_substr
    O(n) using KMP
+   eg: AACECAAAA
+       After concatenation - AACECAAAA#AACECAAAA
+       the longest suffix which is also a prefix for the last character is AACECAA
 */
 
 #include<bits/stdc++.h>
